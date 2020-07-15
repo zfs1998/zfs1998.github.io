@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link href="css/myweb.css" rel="stylesheet" type="text/css">
+		<script src="js/jquery-3.5.1.js"></script>
+		<script src="js/myweb.js"></script>
+	</head>
+	
+	<body>
+		<div id="wrap">
+			<ul class="w_img">
+				<li style="z-index: 999;">
+					<img src="https://drive.google.com/uc?export=view&id=1runLJKqKqpBw7Vu644DWFLvoWptl8kd5">
+				</li>
+				<li><img src="https://drive.google.com/uc?export=view&id=1vftiJwxM3bkDa-XCBLgATQzjuYzWFaA1"></li>
+				<li><img src="https://drive.google.com/uc?export=view&id=1j0b4WZsn86QTGLXDVjrdD0CIuDfdEJ0R"></li>
+				<li><img src="https://drive.google.com/uc?export=view&id=1vcAMjkZ4p5kgVwQSmCf4mt6y6pskXuMM"></li>
+			</ul>
+			<ul class="w_circle">
+				<li ><a href="#"class="c_current"></a></li>
+				<li><a href="#"></a></li>
+				<li><a href="#"></a></li>
+				<li><a href="#"></a></li>
+			</ul>
+			<div class="left_btn btn"><img src="img/lt.png"></div>
+			<div class="right_btn btn"><img src="img/rt.png"></div>
+		</div>
+		<div id="main">
+			<div id="left">
+				<ul>
+					<li><a href="#">动画电影</a></li>
+					<li><a href="#">剧情片</a></li>
+					<li><a href="#">动作片</a></li>
+					<li><a href="#">科幻片</a></li>
+				</ul>
+			</div>
+			<div id="content">
+				<div class="article">
+					<h3>泰坦尼克号</h3>
+					<hr />
+					<a href="#"><img id="img1" src="img/Titanic.jpg" /></a>
+					<p>导演：卡梅隆</p>
+					<p>主演：莱昂纳多、凯特温斯莱特</p>
+					
+				</div>
+				<div class="article">
+					<h3>蝙蝠侠：黑暗骑士</h3>
+					<hr />
+					<a href="#"><img id="img2" src="img/The Dark Knight.jpg" /></a>
+					<p>导演：诺兰</p>
+					<p>主演：希斯莱杰</p>
+				</div>
+				<div class="article">
+					<h3>哈利波特与魔法石</h3>
+					<hr />
+					<a href="#"><img id="img1" src="img/哈利波特.jpg" /></a>
+					<p>哈利波特系列电影第一部</p>
+					<p>改编自罗琳同名小说</p>
+				</div>
+				<div class="photo">
+					<h3>其他电影</h3>
+					<hr />
+					<a href="page.html"><img src="img/千与千寻.jpg" /></a>
+					<a href="page.html"><img src="img/罗小黑战记.jpg" /></a>
+					<a href="page.html"><img src="img/红辣椒.jpg" /></a>
+				</div>
+			</div>
+			<div id="right">
+				<div>
+					<h3>著名导演</h3>
+					<hr />
+					<ul>
+						<li><a href="#"><img src="img/宫崎骏.jpg" /></a></li>
+						<li><a href="#"><img src="img/诺兰.jpg" /></a></li>
+					</ul>
+				</div>
+				<div id="friend">
+					<h3>友情链接</h3>
+					<hr />
+					<ul>
+						<li><a href="https://movie.douban.com/">豆瓣电影</a></li>
+						<li><a href="https://www.imdb.com/">IMDB</a></li>
+
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<div>一个简单的网站</div>
+		</div>
+	</body>
+</html>
