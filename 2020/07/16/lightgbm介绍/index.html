@@ -6,15 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://zfs1998.github.io">
-  <title>Tag: NLP | zfs</title>
+  <title>lightgbm介绍 | zfs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="zfs">
-<meta property="og:url" content="https://zfs1998.github.io/tags/NLP/index.html">
+  <meta name="description" content="lightgbm介绍lightgbm由微软开发的boosting工具包，顾明思议light，这个包计算速度更快，占用内存更少，而准确度和xgboost相当，也是一大神器。接下来就介绍一下。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lightgbm介绍">
+<meta property="og:url" content="https://zfs1998.github.io/2020/07/16/lightgbm%E4%BB%8B%E7%BB%8D/index.html">
 <meta property="og:site_name" content="zfs">
+<meta property="og:description" content="lightgbm介绍lightgbm由微软开发的boosting工具包，顾明思议light，这个包计算速度更快，占用内存更少，而准确度和xgboost相当，也是一大神器。接下来就介绍一下。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zfs1998.github.io/2020/07/16/lightgbm%E4%BB%8B%E7%BB%8D/%5Cimg%5Clgb%E7%9B%B4%E6%96%B9%E5%9B%BE.png">
+<meta property="og:image" content="https://zfs1998.github.io/2020/07/16/lightgbm%E4%BB%8B%E7%BB%8D/%5Cimg%5Clgb%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%81%9A%E5%B7%AE.jpg">
+<meta property="og:image" content="https://zfs1998.github.io/2020/07/16/lightgbm%E4%BB%8B%E7%BB%8D/%5Cimg%5Clgbt%E6%A0%91%E5%88%86%E8%A3%82.png">
+<meta property="article:published_time" content="2020-07-16T10:59:51.000Z">
+<meta property="article:modified_time" content="2020-07-17T00:42:10.065Z">
 <meta property="article:author" content="zfs">
+<meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zfs1998.github.io/2020/07/16/lightgbm%E4%BB%8B%E7%BB%8D/%5Cimg%5Clgb%E7%9B%B4%E6%96%B9%E5%9B%BE.png">
   
     <link rel="alternative" href="/atom.xml" title="zfs" type="application/atom+xml">
   
@@ -155,98 +164,236 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-lightgbm介绍" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/22/TD-IDF/" class="archive-article-date">
-  	<time datetime="2020-06-22T10:59:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-22</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/22/TD-IDF/">TD-IDF</a>
+    <h1 class="article-title" itemprop="name">
+      lightgbm介绍
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/07/16/lightgbm%E4%BB%8B%E7%BB%8D/" class="archive-article-date">
+  	<time datetime="2020-07-16T10:59:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="lightgbm介绍"><a href="#lightgbm介绍" class="headerlink" title="lightgbm介绍"></a>lightgbm介绍</h1><p>lightgbm由微软开发的boosting工具包，顾明思议light，这个包计算速度更快，占用内存更少，而准确度和xgboost相当，也是一大神器。接下来就介绍一下。</p>
+<a id="more"></a>
+
+<h2 id="1-直方图算法"><a href="#1-直方图算法" class="headerlink" title="1. 直方图算法"></a>1. 直方图算法</h2><h3 id="1-1-创建直方图"><a href="#1-1-创建直方图" class="headerlink" title="1.1 创建直方图"></a>1.1 创建直方图</h3><p>把连续的浮点特征值离散化成k个整数，同时构造一个宽度为k的直方图。在 遍历数据的时候，根据离散化后的值作为索引在直方图中累积统计量，当遍 历一次数据后，直方图累积了需要的统计量，然后根据直方图的离散值，遍历寻找最优的分割点。</p>
+<p>如[0,0.3)—&gt;0，[0.3,0.7)—-&gt;1. 对于分类特征来说，则是每一种取值放入一个bin，且当取值的个数大于max bin数时，会忽略那些很少出现的category值。</p>
+<p>在节点分裂的时候，这时候就不需要按照预排序算法那样，对于每个特征都计算#data遍了，而是只需要计算#bins遍，这样就大大加快了训练速度</p>
+<p><img src="%5Cimg%5Clgb%E7%9B%B4%E6%96%B9%E5%9B%BE.png" alt="lgb直方图"></p>
+<h3 id="1-2-直方图做差加速"><a href="#1-2-直方图做差加速" class="headerlink" title="1.2 直方图做差加速"></a>1.2 直方图做差加速</h3><p>一个叶子的直方图可以由它的父亲节点的直方图与它兄弟节点的 直方图做差得到，提升一倍速度在histogram算法上一个trick是histogram 做差加速。一个容易观察到的现象：一个叶子的直方图可以由它的父亲节点的直方图与它兄弟的直方图做差得到。利用这个方法，Lightgbm 可以在构造一个叶子（含有较少数据）的直方图后，可以用非常微小的代价得到它兄弟叶子（含有较多数据）的直方图。histogram算法与 pre-sorted算法对比</p>
+<p><img src="%5Cimg%5Clgb%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%81%9A%E5%B7%AE.jpg" alt="lgb直方图做差"></p>
+<h3 id="1-3-和pre-sorted相比"><a href="#1-3-和pre-sorted相比" class="headerlink" title="1.3 和pre-sorted相比"></a>1.3 和pre-sorted相比</h3><ul>
+<li><p>优势</p>
+<ol>
+<li>Pre-sorted 算法需要的内存约是训练数据的两倍(2 * #data * #features* 4Bytes)，它需要用32位浮点(4Bytes)来保存 feature value，并且对每一列特征，都需要一个额外的排好序的索引，这也需要32位(4Bytes)的存储空间。因此是(2 * #data * #features* 4Bytes)。而对于 histogram 算法，则只需要(#data * #features * 1Bytes)的内存消耗，仅为 pre-sorted算法的1/8。因为 histogram 算法仅需要存储 feature bin value (离散化后的数值)，不需要原始的 feature value，也不用排序，而 bin value 用 1Bytes(256 bins) 的大小一般也就足够了。</li>
+<li>计算上的优势则是大幅减少了计算分割点增益的次数。对于每一个特征，pre-sorted 需要对每一个不同特征值都计算一次分割增益，代价是O(#feature<em>#distinct_values_of_the_feature)；而 histogram 只需要计算#bins次，代价是(#feature</em>#bins)。</li>
+<li>还有一个很重要的点是cache-miss。事实上，cache-miss对速度的影响是特别大的。预排序中有2个操作频繁的地方会造成cache miss，一是对梯度的访问，在计算gain的时候需要利用梯度，不同特征访问梯度的顺序都是不一样的，且是随机的，因此这部分会造成严重的cache-miss。二是对于索引表的访问，预排序使用了一个行号到叶子节点号的索引表（row_idx_to_tree_node_idx ），来防止数据切分时对所有的数据进行切分，即只对该叶子节点上的样本切分。在与level-wise进行结合的时候， 每一个叶子节点都要切分数据，这也是随机的访问。这样会带来严重的系统性能下降。而直方图算法则是天然的cache friendly。在直方图算法的第3个for循环的时候，就已经统计好了每个bin的梯度，因此，在计算gain的时候，只需要对bin进行访问，造成的cache-miss问题会小很多。</li>
+<li>最后，在数据并行的时候，用 histgoram 可以大幅降低通信代价。用 pre-sorted 算法的话，通信代价是非常大的（几乎是没办法用的）。所以 xgoobst 在并行的时候也使用 histogram 进行通信。<br>（数据并行的优化是Lightgbm的令一个亮点，这里不是特别理解，需要再深入研究）</li>
+</ol>
+</li>
+<li><p>劣势<br>histogram 算法不能找到很精确的分割点，训练误差没有 pre-sorted 好。但从实验结果来看， histogram 算法在测试集的误差和 pre-sorted 算法差异并不是很大，甚至有时候效果更好。实际上可能决策树对于分割点的精确程度并不太敏感，而且较“粗”的分割点也自带正则化的效果，再加上boosting算法本身就是弱分类器的集成。</p>
+</li>
+</ul>
+<h2 id="2-建树过程的两种方法：Level-wise和Leaf-wise"><a href="#2-建树过程的两种方法：Level-wise和Leaf-wise" class="headerlink" title="2. 建树过程的两种方法：Level-wise和Leaf-wise"></a>2. 建树过程的两种方法：Level-wise和Leaf-wise</h2><p><img src="%5Cimg%5Clgbt%E6%A0%91%E5%88%86%E8%A3%82.png" alt="lgbt树分裂"></p>
+<h2 id="3-Gradient-based-One-Side-Sampling-GOSS"><a href="#3-Gradient-based-One-Side-Sampling-GOSS" class="headerlink" title="3. Gradient-based One Side Sampling (GOSS)"></a>3. Gradient-based One Side Sampling (GOSS)</h2><p>在每一次迭代前，利用了GBDT中的样本梯度和误差的关系，对训练样 本进行采样: 对误差大（梯度绝对值大）的数据保留；对误差小的数 据采样一个子集，但给这个子集的数据一个权重，让这个子集可以近 似到误差小的数据的全集。这么采样出来的数据，既不损失误差大的 样本，又在减少训练数据的同时不改变数据的分布，从而实现了在几 乎不影响精度的情况下加速了训练。</p>
+<p>在AdaBoost中，权重向量w很好的反应了样本的重要性。而在GBDT中，则没有这样的直接权重来反应样本的重要程度。但是梯度是一个很好的指标，<strong>如果一个样本的梯度很小，说明该样本的训练误差很小</strong>，或者说该<strong>样本已经得到了很好的训练(well-trained)</strong>。</p>
+<p>要减少样本数，一个直接的想法是抛弃那些梯度很小的样本，但是这样训练集的分布会被改变，可能会使得模型准确率下降。LightGBM提出 Gradient-based One-Side Sampling (GOSS)来解决这个问题。</p>
+<ol>
+<li>根据<strong>梯度的绝对值</strong>将样本进行<strong>降序</strong>排序</li>
+<li>选择前a×100%a×100%的样本，这些样本称为A</li>
+<li>剩下的数据(1−a)×100%(1−a)×100% 的数据中，随机抽取b×100%b×100%的数据，这些样本称为B</li>
+<li>在计算增益的时候，放大样本B中的梯度(1−a)/b(1−a)/b 倍</li>
+<li>关于g，在具体的实现中是一阶梯度和二阶梯度的乘积，见Github的实现（ LightGBM/src/boosting/goss.hpp）</li>
+</ol>
+<h2 id="4-Exclusive-Feature-Bundling-EFB"><a href="#4-Exclusive-Feature-Bundling-EFB" class="headerlink" title="4. Exclusive Feature Bundling (EFB)"></a>4. Exclusive Feature Bundling (EFB)</h2><p>一个有高维特征空间的数据往往是稀疏的，而稀疏的特征空间中，许多特征是互斥的。所谓互斥就是他们从来不会同时具有非0值（一个典型的例子是进行One-hot编码后的类别特征）。</p>
+<p>LightGBM利用这一点提出Exclusive Feature Bundling（EFB）算法<strong>来进行互斥特征的合并，从而减少特征的数目</strong>。做法是先确定哪些互斥的特征可以合并（可以合并的特征放在一起，称为bundle），然后将各个bundle合并为一个特征。</p>
+<h2 id="5-其他"><a href="#5-其他" class="headerlink" title="5.其他"></a>5.其他</h2><p>LightGBM的特征并行。每个worker保存所有数据集 </p>
+<ol>
+<li><p>每个worker在其特征子集上寻找最佳切分点 </p>
+</li>
+<li><p>worker之间互相通信，找到全局最佳切分点 </p>
+</li>
+<li><p>每个worker根据全局最佳切分点进行节点分裂 </p>
+<p>优点： 避免广播instance indices，减小网络通信量。</p>
+<p>缺点： split finding计算复杂度没有减小，且当数据量比较大时，单个worker存储所有数据代价高。</p>
+</li>
+</ol>
+<p><strong>参考资料</strong>：博客1：<a href="https://www.hrwhisper.me/machine-learning-lightgbm/" target="_blank" rel="noopener">https://www.hrwhisper.me/machine-learning-lightgbm/</a></p>
+<p>博客2：<a href="https://blog.csdn.net/anshuai_aw1/java/article/details/83040541" target="_blank" rel="noopener">https://blog.csdn.net/anshuai_aw1/java/article/details/83040541</a></p>
+<p>一个很详细的PPT <a href="http://wepon.me/files/gbdt.pdf" target="_blank" rel="noopener">http://wepon.me/files/gbdt.pdf</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">NLP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://zfs1998.github.io/2020/07/16/lightgbm%E4%BB%8B%E7%BB%8D/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/22/NLP%E7%AE%97%E6%B3%95%E6%80%BB%E8%BF%B0/" class="archive-article-date">
-  	<time datetime="2020-06-22T10:58:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-22</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/07/16/GBDT%E4%B8%AD%E6%96%87/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          GBDT介绍
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/06/30/map/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">点亮地图</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/22/NLP%E7%AE%97%E6%B3%95%E6%80%BB%E8%BF%B0/">NLP算法总述</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">NLP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#lightgbm介绍"><span class="toc-number">1.</span> <span class="toc-text">lightgbm介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-直方图算法"><span class="toc-number">1.1.</span> <span class="toc-text">1. 直方图算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-创建直方图"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 创建直方图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-直方图做差加速"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 直方图做差加速</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-和pre-sorted相比"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 和pre-sorted相比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-建树过程的两种方法：Level-wise和Leaf-wise"><span class="toc-number">1.2.</span> <span class="toc-text">2. 建树过程的两种方法：Level-wise和Leaf-wise</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Gradient-based-One-Side-Sampling-GOSS"><span class="toc-number">1.3.</span> <span class="toc-text">3. Gradient-based One Side Sampling (GOSS)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Exclusive-Feature-Bundling-EFB"><span class="toc-number">1.4.</span> <span class="toc-text">4. Exclusive Feature Bundling (EFB)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-其他"><span class="toc-number">1.5.</span> <span class="toc-text">5.其他</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -269,9 +416,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

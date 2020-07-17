@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zfs1998.github.io/2020/07/16/GBDT%E4%B8%AD%E6%96%87/</loc>
+    
+    <lastmod>2020-07-17T00:43:18.196Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://zfs1998.github.io/2020/07/16/xgboost%E4%BB%8B%E7%BB%8D/</loc>
+    
+    <lastmod>2020-07-17T00:42:28.637Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://zfs1998.github.io/2020/07/16/lightgbm%E4%BB%8B%E7%BB%8D/</loc>
+    
+    <lastmod>2020-07-17T00:42:10.065Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://zfs1998.github.io/2020/06/16/hexo+github%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/</loc>
     
     <lastmod>2020-06-30T23:34:44.856Z</lastmod>
